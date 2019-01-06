@@ -3,11 +3,11 @@ localStorage.setItem('example_project', 'D3: Scatter Plot');
 
 d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json').then(function(data) {
 	const dataset = data;
-	
+
 	const w = 1032;
 	const h = 500;
 	const padding = 50;
-	
+
 	const xScale = d3.scaleTime()
 										.domain(d3.extent(dataset, (d) => new Date(d['Year'], 0)))
 										.range([padding, w - padding]);
@@ -15,15 +15,15 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
 	const yScale = d3.scaleTime()
 										.domain(d3.extent(dataset, (d) => new Date(0, 0, 0, 0, 0, d['Seconds'])))
 										.range([0, h - padding]);
-	
+
 	const yScaleAxis = d3.scaleTime()
 										.domain(d3.extent(dataset, (d) => new Date(0, 0, 0, 0, 0, d['Seconds'])))
 										.range([h - padding, 0]);
-	
+
 	var tooltip = d3.select('body')
 									.append('div')
 									.attr('id', 'tooltip');
-	
+
 	const svg = d3.select('#canvas')
 								.append('svg')
 								.attr('width', w)
@@ -54,7 +54,7 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
 			.attr('id', 'x-axis')
 			.attr('transform', 'translate(0, ' + (h - padding) + ')')
 			.call(xAxis);
-	
+
 	svg.append('text')             
       .attr('transform', 'translate(' + (w / 2) + ', ' + (h - 10) + ')')
       .style('text-anchor', 'middle')
@@ -64,7 +64,7 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
 			.attr('id', 'y-axis')
 			.attr('transform', 'translate(' + padding + ', 0)')
 			.call(yAxis);
-	
+
 	svg.append('text')
       .attr('transform', 'rotate(-90)')
       .attr('y', -5)
