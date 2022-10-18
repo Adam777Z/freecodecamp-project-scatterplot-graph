@@ -1,8 +1,8 @@
 const projectName = 'scatter-plot';
 localStorage.setItem('example_project', 'D3: Scatter Plot');
 
-document.addEventListener('DOMContentLoaded', function(event) {
-	d3.json('./assets/json/cyclist-data.json').then(function(data) {
+document.addEventListener('DOMContentLoaded', (event) => {
+	d3.json('./assets/json/cyclist-data.json').then((data) => {
 		const dataset = data;
 
 		const w = 1032;
